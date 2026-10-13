@@ -1,0 +1,3115 @@
+/* =========================================================
+   GGtiers - GŁÓWNY STYL
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #211a08 0%,
+            #0d0d0d 45%,
+            #080808 100%
+        );
+
+    color: #f5f5f5;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================================================
+   LINKI
+   ========================================================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    background: rgba(10, 10, 10, 0.94);
+
+    border-bottom: 1px solid #3b2d0d;
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+
+header h1 {
+    color: #ffd54a;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 15px rgba(255, 213, 74, 0.2);
+}
+
+
+header nav {
+    display: flex;
+    gap: 28px;
+}
+
+
+header nav a {
+    color: #a9a9a9;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+header nav a:hover {
+    color: #ffd54a;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+main {
+    width: min(1200px, calc(100% - 40px));
+
+    margin: 45px auto;
+}
+
+
+main > h2 {
+    margin-bottom: 25px;
+
+    font-size: 27px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+#playerSearch {
+    width: 100%;
+
+    height: 48px;
+
+    margin-bottom: 25px;
+
+    padding: 0 16px;
+
+    border: 1px solid #3b2d0d;
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+#playerSearch::placeholder {
+    color: #777777;
+}
+
+
+#playerSearch:focus {
+    border-color: #d6a928;
+
+    box-shadow:
+        0 0 0 3px rgba(214, 169, 40, 0.1);
+}
+
+
+/* =========================================================
+   TIERLIST
+   ========================================================= */
+
+#tierlist {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid #3b2d0d;
+    border-radius: 14px;
+
+    background: #101010;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   TIERLIST - WIERSZE
+   ========================================================= */
+
+/*
+   WAŻNE:
+
+   --mode-count jest ustawiane przez JS.
+
+   Dzięki temu:
+
+   4 tryby -> 4 kolumny tierów
+   5 trybów -> 5 kolumn tierów
+   6 trybów -> 6 kolumn tierów
+
+   itd.
+*/
+
+.all-players-header,
+.all-players-row {
+
+    display: grid;
+
+    grid-template-columns:
+        60px
+        minmax(180px, 2fr)
+        minmax(90px, 1fr)
+        repeat(
+            var(--mode-count, 4),
+            minmax(100px, 1fr)
+        );
+
+    min-width: max-content;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   NAGŁÓWEK TIERLISTY
+   ========================================================= */
+
+.all-players-header {
+
+    min-height: 52px;
+
+    padding: 0 18px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #19150b,
+            #121212
+        );
+
+    border-bottom: 1px solid #3b2d0d;
+
+    color: #8f8f8f;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.8px;
+}
+
+
+.all-players-header strong {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   WIERSZ GRACZA
+   ========================================================= */
+
+.all-players-row {
+
+    min-height: 65px;
+
+    padding: 0 18px;
+
+    border-bottom: 1px solid #202020;
+
+    transition:
+        background 0.15s ease;
+}
+
+
+.all-players-row:last-child {
+    border-bottom: none;
+}
+
+
+.all-players-row:hover {
+    background: rgba(255, 213, 74, 0.035);
+}
+
+
+/* =========================================================
+   MIEJSCE
+   ========================================================= */
+
+.player-place {
+    color: #858585;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   NICK GRACZA
+   ========================================================= */
+
+.player-name {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-width: 0;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+.player-name:hover {
+    color: #ffd54a;
+}
+
+
+/* =========================================================
+   OVERALL
+   ========================================================= */
+
+.player-overall {
+
+    color: #ffd54a;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TIERY W TIERLIŚCIE
+   ========================================================= */
+
+.player-tier {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    min-width: 58px;
+
+    padding: 7px 12px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    text-align: center;
+
+    background: #1b1b1b;
+
+    border: 1px solid #292929;
+}
+
+
+/* =========================================================
+   KOLORY TIERÓW
+   ========================================================= */
+
+.tier-lt1 {
+    color: #ffd700;
+
+    background: rgba(255, 215, 0, 0.10);
+
+    border-color: rgba(255, 215, 0, 0.35);
+}
+
+
+.tier-lt2 {
+    color: #c58cff;
+
+    background: rgba(197, 140, 255, 0.10);
+
+    border-color: rgba(197, 140, 255, 0.3);
+}
+
+
+.tier-lt3 {
+    color: #58a6ff;
+
+    background: rgba(88, 166, 255, 0.10);
+
+    border-color: rgba(88, 166, 255, 0.3);
+}
+
+
+.tier-ht4 {
+    color: #59d98e;
+
+    background: rgba(89, 217, 142, 0.10);
+
+    border-color: rgba(89, 217, 142, 0.3);
+}
+
+
+.tier-ht5 {
+    color: #ff6b6b;
+
+    background: rgba(255, 107, 107, 0.10);
+
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+
+/* =========================================================
+   SUBHUMAN
+   ========================================================= */
+
+.subhuman-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 3px 7px;
+
+    border-radius: 5px;
+
+    background: #252525;
+
+    border: 1px solid #444444;
+
+    color: #9d9d9d;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   PLAYER MODAL
+   ========================================================= */
+
+.player-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 1000;
+}
+
+
+.player-modal.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.player-modal-content {
+
+    width: min(500px, 100%);
+
+    padding: 28px;
+
+    border: 1px solid #4a390f;
+    border-radius: 15px;
+
+    background: #111111;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+
+.player-modal-content h2 {
+
+    margin-bottom: 22px;
+
+    color: #ffd54a;
+
+    font-size: 24px;
+}
+
+
+.modal-place {
+
+    margin-left: 8px;
+
+    color: #888888;
+
+    font-size: 14px;
+}
+
+
+.modal-tier {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 13px 0;
+
+    border-bottom: 1px solid #222222;
+}
+
+
+.modal-tier:last-child {
+    border-bottom: none;
+}
+
+
+.modal-tier strong {
+    color: #dddddd;
+}
+
+
+.modal-tier-value {
+    font-weight: 800;
+}
+
+
+#closePlayerModal {
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 11px;
+
+    border: 1px solid #55430f;
+    border-radius: 8px;
+
+    background: #18150d;
+
+    color: #ffd54a;
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+
+#closePlayerModal:hover {
+    background: #211c0e;
+}
+
+
+/* =========================================================
+   PLAYER PROFILE
+   ========================================================= */
+
+.player-profile-page {
+    width: min(850px, calc(100% - 40px));
+
+    margin: 55px auto;
+}
+
+
+.player-profile {
+
+    padding: 30px;
+
+    border: 1px solid #40320f;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #15130d,
+            #101010
+        );
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   PROFILE HEADER
+   ========================================================= */
+
+.player-profile-header {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #29230f;
+}
+
+
+.profile-label {
+
+    margin-bottom: 6px;
+
+    color: #9b7c23;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.player-profile-header h2 {
+
+    color: #ffffff;
+
+    font-size: 32px;
+}
+
+
+.profile-place {
+
+    color: #ffd54a;
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   PROFILE OVERALL
+   ========================================================= */
+
+.profile-overall {
+
+    margin-top: 25px;
+
+    padding: 22px;
+
+    border: 1px solid #4a390f;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 213, 74, 0.08),
+            rgba(255, 213, 74, 0.015)
+        );
+}
+
+
+.profile-overall span {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #9b9b9b;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.profile-overall strong {
+
+    color: #ffd54a;
+
+    font-size: 32px;
+}
+
+
+.profile-overall small {
+
+    margin-left: 5px;
+
+    color: #777777;
+}
+
+
+/* =========================================================
+   PROFILE TIERY
+   ========================================================= */
+
+.profile-tiers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-top: 20px;
+}
+
+
+.profile-tier-card {
+    display: grid;
+
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
+
+    padding: 18px;
+
+    border: 1px solid #292929;
+    border-radius: 12px;
+
+    background: #121212;
+
+    .profile-tier-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: #1c180d;
+
+    font-size: 20px;
+}
+
+.profile-tier-icon .mode-icon-image {
+    width: 28px;
+    height: 28px;
+
+    object-fit: contain;
+
+    display: block;
+}
+}
+
+
+.profile-tier-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: #1c180d;
+
+    font-size: 20px;
+}
+
+
+.profile-tier-name {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.profile-tier-name strong {
+
+    color: #eeeeee;
+
+    font-size: 14px;
+}
+
+
+.profile-tier-name small {
+
+    margin-top: 3px;
+
+    color: #6f6f6f;
+
+    font-size: 11px;
+}
+
+
+.profile-tier-value {
+
+    flex-shrink: 0;
+
+    min-width: 55px;
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   PROFILE BACK BUTTON
+   ========================================================= */
+
+.profile-back-button {
+
+    display: inline-flex;
+
+    margin-top: 25px;
+
+    padding: 11px 15px;
+
+    border: 1px solid #3d310f;
+    border-radius: 8px;
+
+    background: #15130e;
+
+    color: #c7c7c7;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.profile-back-button:hover {
+
+    color: #ffd54a;
+
+    border-color: #665116;
+}
+
+
+/* =========================================================
+   ADMIN - GŁÓWNY UKŁAD
+   ========================================================= */
+
+.admin-page {
+    min-height: 100vh;
+}
+
+
+.admin-layout {
+
+    width: 100%;
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 240px minmax(0, 1fr);
+
+    min-height: calc(100vh - 72px);
+}
+
+
+/* =========================================================
+   ADMIN SIDEBAR
+   ========================================================= */
+
+.admin-sidebar {
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 25px 16px;
+
+    border-right: 1px solid #30270f;
+
+    background: #0d0d0d;
+}
+
+
+.admin-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 5px 8px 25px;
+}
+
+
+.admin-logo-icon {
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd54a,
+            #9c7517
+        );
+
+    color: #0d0d0d;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+.admin-logo strong {
+
+    display: block;
+
+    color: #f1f1f1;
+
+    font-size: 15px;
+}
+
+
+.admin-logo small {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: #666666;
+
+    font-size: 10px;
+}
+
+
+.admin-menu {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.admin-menu-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 12px;
+
+    border-radius: 8px;
+
+    color: #888888;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.admin-menu-item:hover,
+.admin-menu-item.active {
+
+    background: rgba(255, 213, 74, 0.08);
+
+    color: #ffd54a;
+}
+
+
+.admin-sidebar-bottom {
+
+    margin-top: auto;
+
+    padding: 15px 8px 0;
+
+    border-top: 1px solid #222222;
+}
+
+
+.admin-sidebar-bottom a {
+
+    color: #777777;
+
+    font-size: 12px;
+}
+
+
+.admin-sidebar-bottom a:hover {
+    color: #ffd54a;
+}
+
+
+/* =========================================================
+   ADMIN CONTENT
+   ========================================================= */
+
+.admin-content {
+
+    min-width: 0;
+
+    padding: 40px;
+}
+
+
+.admin-page-header {
+    margin-bottom: 30px;
+}
+
+
+.admin-small-title {
+
+    margin-bottom: 6px;
+
+    color: #9b7c23;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.admin-page-header h2 {
+
+    color: #ffffff;
+
+    font-size: 28px;
+}
+
+
+.admin-page-header > div > p:last-child {
+
+    margin-top: 7px;
+
+    color: #777777;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   ADMIN CARD
+   ========================================================= */
+
+.admin-card {
+
+    margin-bottom: 25px;
+
+    border: 1px solid #30270f;
+    border-radius: 14px;
+
+    background: #111111;
+
+    overflow: hidden;
+}
+
+
+.admin-card-header {
+
+    padding: 22px;
+
+    border-bottom: 1px solid #252525;
+}
+
+
+.admin-card-header h3 {
+
+    color: #eeeeee;
+
+    font-size: 17px;
+}
+
+
+.admin-card-header p {
+
+    margin-top: 5px;
+
+    color: #707070;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ADMIN FORM
+   ========================================================= */
+
+.admin-form {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    padding: 22px;
+}
+
+
+.admin-form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.admin-name-field {
+    grid-column: 1 / -1;
+}
+
+
+.admin-form-group label {
+
+    color: #999999;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.admin-form-group input,
+.admin-form-group select {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #303030;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: #171717;
+
+    color: #eeeeee;
+
+    font-size: 13px;
+}
+
+
+.admin-form-group input:focus,
+.admin-form-group select:focus {
+
+    border-color: #9b791f;
+
+    box-shadow:
+        0 0 0 2px rgba(255, 213, 74, 0.08);
+}
+
+
+/* =========================================================
+   DYNAMICZNE TRYBY ADMINA
+   ========================================================= */
+
+.admin-generated-modes {
+
+    grid-column: 1 / -1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(180px, 1fr)
+        );
+
+    gap: 18px;
+}
+
+
+.admin-generated-modes .admin-form-group {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   SUBHUMAN
+   ========================================================= */
+
+.admin-subhuman-field {
+
+    grid-column: 1 / -1;
+
+    padding-top: 3px;
+}
+
+
+.admin-checkbox {
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center;
+
+    gap: 9px;
+
+    width: fit-content;
+
+    cursor: pointer;
+}
+
+
+.admin-checkbox input {
+
+    width: 16px !important;
+    height: 16px !important;
+
+    accent-color: #d6a928;
+
+    cursor: pointer;
+}
+
+
+.admin-checkbox span {
+
+    color: #b8b8b8 !important;
+
+    font-size: 12px !important;
+}
+
+
+/* =========================================================
+   ADMIN ACTIONS
+   ========================================================= */
+
+.admin-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    padding: 0 22px 22px;
+}
+
+
+.admin-button {
+
+    min-height: 40px;
+
+    padding: 0 17px;
+
+    border-radius: 8px;
+
+    border: 1px solid #333333;
+
+    background: #181818;
+
+    color: #cccccc;
+
+    cursor: pointer;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.admin-button.primary {
+
+    border-color: #806719;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d6a928,
+            #9d7617
+        );
+
+    color: #111111;
+}
+
+
+.admin-button.primary:hover {
+
+    filter: brightness(1.08);
+}
+
+
+.admin-button.danger {
+
+    border-color: #542222;
+
+    background: #241313;
+
+    color: #ff7777;
+}
+
+
+.admin-button.danger:hover {
+
+    background: #321818;
+}
+
+
+/* =========================================================
+   ADMIN STATUS
+   ========================================================= */
+
+.admin-status {
+
+    min-height: 18px;
+
+    padding: 0 22px 18px;
+
+    color: #4ade80;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ADMIN PLAYER TABLE
+   ========================================================= */
+
+.admin-players-table {
+
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.admin-player {
+
+    width: 100%;
+
+    min-width: max-content;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 1.5fr)
+        repeat(
+            var(--mode-count, 4),
+            minmax(100px, 1fr)
+        );
+
+    align-items: center;
+
+    gap: 0;
+
+    padding: 15px 22px;
+
+    border: none;
+    border-bottom: 1px solid #222222;
+
+    background: transparent;
+
+    color: #dddddd;
+
+    text-align: left;
+}
+
+
+.admin-player:last-child {
+    border-bottom: none;
+}
+
+
+.admin-player-header {
+
+    color: #666666;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    background: #0e0e0e;
+}
+
+
+.admin-player-button {
+
+    cursor: pointer;
+
+    font-family: inherit;
+}
+
+
+.admin-player-button:hover {
+
+    background:
+        rgba(255, 213, 74, 0.035);
+
+    color: #ffd54a;
+}
+
+
+.admin-player strong {
+
+.admin-player-button > span {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    justify-self: center;
+
+    width: fit-content;
+    min-width: 58px;
+    height: 30px;
+
+    padding: 0 10px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+}
+
+    
+    
+
+
+
+/* =========================================================
+   EDIT MODAL
+   ========================================================= */
+
+.edit-player-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 2000;
+}
+
+
+.edit-player-modal.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.edit-player-content {
+
+    width: min(620px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 25px;
+
+    border: 1px solid #4a390f;
+    border-radius: 14px;
+
+    background: #111111;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.7);
+}
+
+
+.edit-player-header {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #252525;
+}
+
+
+.edit-player-header p {
+
+    margin-bottom: 4px;
+
+    color: #8d7122;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+
+.edit-player-header h2 {
+
+    color: #ffffff;
+
+    font-size: 22px;
+}
+
+
+.close-modal-button {
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #1c1c1c;
+
+    color: #999999;
+
+    cursor: pointer;
+
+    font-size: 22px;
+}
+
+
+.close-modal-button:hover {
+
+    background: #292929;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   EDIT TIERY
+   ========================================================= */
+
+.edit-player-tiers {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.edit-tier-row {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 14px;
+
+    border: 1px solid #272727;
+    border-radius: 9px;
+
+    background: #151515;
+}
+
+
+.edit-tier-row strong {
+
+    display: block;
+
+    color: #dddddd;
+
+    font-size: 13px;
+}
+
+
+.edit-tier-row small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #666666;
+
+    font-size: 10px;
+}
+
+
+.edit-tier-row select {
+
+    width: 120px;
+
+    height: 38px;
+
+    padding: 0 9px;
+
+    border: 1px solid #333333;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #1b1b1b;
+
+    color: #eeeeee;
+}
+
+
+/* =========================================================
+   EDIT SUBHUMAN
+   ========================================================= */
+
+.edit-player-subhuman {
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border: 1px solid #272727;
+    border-radius: 9px;
+
+    background: #151515;
+}
+
+
+/* =========================================================
+   EDIT ACTIONS
+   ========================================================= */
+
+.edit-player-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #252525;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+
+    .admin-layout {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .admin-sidebar {
+
+        border-right: none;
+
+        border-bottom: 1px solid #30270f;
+
+        padding: 15px;
+
+    }
+
+
+    .admin-sidebar-bottom {
+        margin-top: 15px;
+    }
+
+
+    .admin-content {
+        padding: 25px 20px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    main {
+        width: min(
+            100% - 20px,
+            1200px
+        );
+
+        margin: 25px auto;
+    }
+
+
+    header {
+
+        height: auto;
+
+        min-height: 65px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        padding: 12px 20px;
+
+    }
+
+
+    header nav {
+        gap: 18px;
+    }
+
+
+    .all-players-header,
+    .all-players-row {
+
+        grid-template-columns:
+            45px
+            minmax(140px, 1.5fr)
+            minmax(80px, 1fr)
+            repeat(
+                var(--mode-count, 4),
+                minmax(90px, 1fr)
+            );
+
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .profile-tiers {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .player-profile {
+
+        padding: 20px;
+
+    }
+
+
+    .player-profile-header h2 {
+
+        font-size: 25px;
+
+    }
+
+
+    .admin-form {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .admin-name-field,
+    .admin-generated-modes,
+    .admin-subhuman-field {
+
+        grid-column: 1;
+
+    }
+
+
+    .admin-generated-modes {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .admin-player {
+
+        grid-template-columns:
+            minmax(150px, 1.5fr)
+            repeat(
+                var(--mode-count, 4),
+                minmax(90px, 1fr)
+            );
+
+        padding-left: 15px;
+        padding-right: 15px;
+
+    }
+
+
+    .edit-player-actions {
+
+        flex-direction: column;
+
+    }
+
+
+    .edit-player-actions .admin-button {
+
+        width: 100%;
+
+    }
+
+}
+/* =========================================================
+   FIX - TIER BOXES W ADMIN PANELU
+   ========================================================= */
+
+.admin-player-button > span[class^="tier-"] {
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    justify-self: center !important;
+
+    width: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
+
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+
+    padding: 0 8px !important;
+
+    margin: 0 !important;
+
+    border-radius: 7px !important;
+
+    box-sizing: border-box !important;
+
+    font-size: 12px !important;
+    font-weight: 800 !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+}
+.mode-icon-image {
+    width: 24px;
+    height: 24px;
+
+    object-fit: contain;
+
+    display: block;
+}
+/* =========================================================
+   MODE ICONS
+   ========================================================= */
+
+.mode-icon-image {
+    width: 24px;
+    height: 24px;
+
+    object-fit: contain;
+    display: block;
+
+    flex-shrink: 0;
+}
+
+.profile-tier-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-form-group label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+/* =========================================================
+   IKONY TRYBÓW
+   ========================================================= */
+
+.mode-icon-image {
+    width: 24px;
+    height: 24px;
+
+    object-fit: contain;
+
+    display: block;
+
+    flex-shrink: 0;
+}
+
+
+/* ========================================
+   ADMIN - DODAWANIE GRACZA
+   ======================================== */
+
+.admin-mode-label {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    gap: 8px !important;
+}
+
+.admin-mode-label .mode-icon-image {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* ========================================
+   ADMIN - NAGŁÓWKI TABELI
+   ======================================== */
+
+.admin-player-header > span:not(:first-child) {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+}
+
+.admin-player-header > span:not(:first-child) .mode-icon-image {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ========================================
+   ADMIN - EDYCJA GRACZA
+   ======================================== */
+
+.edit-mode-title {
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 8px;
+}
+
+.edit-mode-title .mode-icon-image {
+    width: 22px;
+    height: 22px;
+}
+
+
+/* ========================================
+   PROFIL GRACZA
+   ======================================== */
+
+.profile-tier-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-tier-icon .mode-icon-image {
+    width: 28px;
+    height: 28px;
+}
+/* =========================================================
+   GGtiers - POPRAWKA UKŁADU IKON
+   ========================================================= */
+
+/* Wszystkie obrazki ikon */
+.mode-icon-image {
+    display: inline-block !important;
+
+    width: 24px !important;
+    height: 24px !important;
+
+    object-fit: contain !important;
+
+    vertical-align: middle !important;
+
+    flex-shrink: 0 !important;
+}
+
+
+/* ================================
+   DODAWANIE GRACZA
+   ================================ */
+
+.admin-form-group .admin-mode-label {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    justify-content: flex-start !important;
+
+    gap: 8px !important;
+}
+
+.admin-mode-label > span:not(.mode-icon-emoji) {
+    display: inline !important;
+}
+
+
+/* ================================
+   NAGŁÓWEK TABELI
+   ================================ */
+
+.admin-player-header > span:not(:first-child) {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    gap: 6px !important;
+
+    white-space: nowrap !important;
+}
+
+.admin-player-header > span:not(:first-child) > span {
+    display: inline !important;
+
+    width: auto !important;
+
+    min-width: 0 !important;
+}
+
+
+/* ================================
+   MODAL EDYCJI
+   ================================ */
+
+.edit-mode-title {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    gap: 8px !important;
+}
+
+.edit-mode-title > span {
+    display: inline !important;
+
+    width: auto !important;
+}
+
+
+/* ================================
+   PROFIL
+   ================================ */
+
+.profile-tier-icon {
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+}
+
+.profile-tier-icon .mode-icon-image {
+    width: 28px !important;
+    height: 28px !important;
+}
+/* =========================================================
+   EDYCJA TIERÓW - WYGLĄD PÓL
+   ========================================================= */
+
+.edit-player-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+/* POJEDYNCZY TRYB */
+
+.edit-mode-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 64px;
+
+    padding: 10px 12px 10px 16px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #4a390f;
+    border-radius: 10px;
+
+    background: #151515;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.edit-mode-row:hover {
+    border-color: #6d5416;
+
+    background: #191919;
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+
+/* NAZWA TRYBU + IKONA */
+
+.edit-mode-title {
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 10px !important;
+
+    min-width: 0;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+.edit-mode-title .mode-icon-image {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+.edit-mode-title .mode-icon-emoji {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 22px;
+}
+
+
+/* SELECT TIERU */
+
+.edit-tier-select {
+    width: 125px !important;
+    min-width: 125px !important;
+    height: 42px !important;
+
+    padding: 0 12px !important;
+
+    box-sizing: border-box;
+
+    border: 1px solid #5b4612 !important;
+    border-radius: 8px !important;
+
+    background: #0f0f0f !important;
+
+    color: #ffffff !important;
+
+    font-size: 14px !important;
+    font-weight: 800 !important;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.edit-tier-select:hover {
+    border-color: #8d7122 !important;
+
+    background: #171717 !important;
+}
+
+
+.edit-tier-select:focus {
+    border-color: #b08d2b !important;
+
+    background: #171717 !important;
+
+    box-shadow:
+        0 0 0 2px rgba(176, 141, 43, 0.15);
+
+    outline: none;
+}
+
+
+/* OPCJE W SELECT */
+
+.edit-tier-select option {
+    background: #111111;
+
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+
+/* SUBHUMAN */
+
+.edit-player-subhuman {
+    margin-top: 14px;
+
+    padding: 14px 16px;
+
+    border: 1px solid #292929;
+    border-radius: 10px;
+
+    background: #151515;
+}
+
+
+/* PRZYCISKI POD MODALEM */
+
+.edit-player-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+.edit-player-actions .admin-button {
+    min-height: 42px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .edit-mode-row {
+        min-height: 58px;
+
+        padding: 8px 10px 8px 12px;
+    }
+
+
+    .edit-mode-title {
+        font-size: 13px;
+    }
+
+
+    .edit-mode-title .mode-icon-image,
+    .edit-mode-title .mode-icon-emoji {
+        width: 26px;
+        height: 26px;
+    }
+
+
+    .edit-tier-select {
+        width: 105px !important;
+        min-width: 105px !important;
+        height: 38px !important;
+
+        font-size: 13px !important;
+    }
+}
+h1 img {
+    width: 75px;
+    height: auto;
+}
+h1 img {
+
+    margin-left: -40px;
+}
+header h2 {
+    background: #111111;
+    color: #b08d2b;
+    font-weight: 700;
+}
+/* ========================================
+   SKIN GRACZA W TIERLIŚCIE
+======================================== */
+
+.player-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.player-skin {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.player-name-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ========================================
+   SKIN W MODALU
+======================================== */
+
+.modal-player-skin {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* =========================================================
+   NAGŁÓWEK - STAŁE POŁOŻENIE NA KAŻDYM EKRANIE
+   (zastępuje sztuczki z margin-left: -835px / -40px)
+   ========================================================= */
+
+header h1,
+header h2 {
+    margin: 0;
+}
+
+header h1 img {
+    margin-left: 0;
+    display: block;
+}
+
+@media (min-width: 651px) {
+
+    header {
+        justify-content: flex-start;
+        gap: 14px;
+    }
+
+    header nav {
+        margin-left: auto;
+    }
+}
+
+
+/* =========================================================
+   SKIN CAŁEJ POSTACI W OKIENKU GRACZA
+   ========================================================= */
+
+#modalPlayerName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+}
+
+.modal-skin-body {
+    height: 220px;
+    width: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.6));
+}
+
+
+/* =========================================================
+   HERO - NISKA GÓRA STRONY (bez menu)
+   ========================================================= */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    padding: 22px 20px;
+
+    border-bottom: 1px solid #3b2d0d;
+}
+
+/* rozmyte tło z banera */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    z-index: -2;
+
+    background: url("images/GGbanner.jpg") center / cover no-repeat;
+    filter: blur(14px) brightness(0.4) saturate(1.2);
+}
+
+/* przyciemnienie od lewej, żeby tekst był czytelny */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(8, 8, 8, 0.75) 0%,
+        rgba(8, 8, 8, 0.2) 100%
+    );
+}
+
+.hero-inner {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.hero-logo {
+    width: 72px;
+    height: 72px;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(255, 213, 74, 0.5);
+    border-radius: 16px;
+
+    box-shadow: 0 0 28px rgba(255, 170, 0, 0.25);
+}
+
+.hero-title {
+    color: #ffd54a;
+
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+
+    text-shadow: 0 0 18px rgba(255, 213, 74, 0.3);
+}
+
+.hero-subtitle {
+    margin-top: 4px;
+
+    color: #cdbf93;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+@media (max-width: 650px) {
+    .hero {
+        padding: 16px 14px;
+    }
+
+    .hero-logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+    }
+
+    .hero-title {
+        font-size: 26px;
+    }
+
+    .hero-subtitle {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   PRZYCISKI TRYBÓW (ZAKŁADKI)
+   ========================================================= */
+
+.mode-tabs {
+    display: flex;
+    gap: 5px;
+
+    margin-bottom: 22px;
+    padding-bottom: 4px;
+
+    overflow-x: auto;
+}
+
+.mode-tab {
+    flex: 0 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    min-width: 74px;
+    padding: 8px 10px 7px;
+
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+
+    background: #121212;
+    color: #8f8f8f;
+
+    font: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        color 0.15s ease,
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+.mode-tab:hover {
+    color: #ffffff;
+    border-color: #4a390f;
+}
+
+.mode-tab.active {
+    color: #ffffff;
+    border-color: #d6a928;
+
+    background: linear-gradient(#251d09, #121212);
+
+    box-shadow: inset 0 -2px 0 #ffd54a;
+}
+
+.mode-tab:focus-visible {
+    outline: 2px solid #ffd54a;
+    outline-offset: 2px;
+}
+
+.tab-icon,
+.tab-icon-emoji {
+    width: 24px;
+    height: 24px;
+
+    display: block;
+
+    object-fit: contain;
+    image-rendering: pixelated;
+
+    font-size: 21px;
+    line-height: 24px;
+    text-align: center;
+}
+
+
+/* =========================================================
+   WIDOK KOLUMN (TIERY DLA TRYBU)
+   ========================================================= */
+
+#tierlist.columns-view {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.tier-columns {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    padding-bottom: 12px;
+}
+
+.tier-column {
+    flex: 1 1 0;
+    min-width: 215px;
+
+    min-height: 260px;
+
+    border: 1px solid rgba(var(--tc-rgb), 0.45);
+
+    background: #0e0e0e;
+
+    clip-path: polygon(
+        0 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% 100%,
+        0 100%
+    );
+}
+
+.tier-column-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 16px;
+
+    background: linear-gradient(
+        135deg,
+        var(--tc),
+        var(--tc-lo)
+    );
+
+    color: #111111;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.tier-column-head small {
+    padding: 2px 9px;
+
+    border-radius: 999px;
+
+    background: rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tier-column-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.tier-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    padding: 9px 14px;
+
+    border: none;
+    border-bottom: 1px solid #1a1a1a;
+
+    background: transparent;
+    color: #ffffff;
+
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+/* pierwsze miejsca w tierze są podświetlone kolorem tieru */
+.tier-player:nth-child(-n+5) {
+    background: linear-gradient(
+        90deg,
+        rgba(var(--tc-rgb), 0.28),
+        rgba(var(--tc-rgb), 0.04)
+    );
+}
+
+.tier-player:hover {
+    background: rgba(var(--tc-rgb), 0.22);
+}
+
+.tier-player:focus-visible {
+    outline: 2px solid var(--tc);
+    outline-offset: -2px;
+}
+
+.tier-player-skin {
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    border-radius: 4px;
+
+    image-rendering: pixelated;
+}
+
+.tier-player-name {
+    flex: 1;
+    min-width: 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tier-column-empty {
+    padding: 18px 16px;
+
+    color: #666666;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   PRZYCISK DISCORD (TYLKO OBRAZEK)
+   ========================================================= */
+
+.discord-link {
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    display: block;
+    width: 52px;
+    height: 52px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 6px 20px rgba(88, 101, 242, 0.35);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.discord-link img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.discord-link:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 26px rgba(88, 101, 242, 0.55);
+}
+
+.discord-link:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+
+
+
+/* =========================================================
+   TAG TIERU W WIERSZU GRACZA
+   ========================================================= */
+
+.tier-tag {
+    margin-left: auto;
+
+    padding: 1px 7px;
+
+    border: 1px solid rgba(var(--tc-rgb), 0.55);
+    border-radius: 6px;
+
+    background: rgba(0, 0, 0, 0.35);
+    color: var(--tc);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   ODZNAKA TIERU: KÓŁKO Z IKONĄ + PASTYLKA POD SPODEM
+   ========================================================= */
+
+.player-modal-content {
+    width: min(560px, 100%);
+}
+
+.modal-badges {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px 8px;
+
+    margin-top: 20px;
+}
+
+.tier-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-circle {
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(#3d3d3d, #1b1b1b);
+}
+
+.badge-circle::before {
+    content: "";
+
+    position: absolute;
+    inset: 3px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle at 50% 35%, #232323, #0c0c0c);
+}
+
+.badge-icon,
+.badge-icon-emoji {
+    position: relative;
+
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+    image-rendering: pixelated;
+
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30px;
+    text-align: center;
+
+    color: #555555;
+}
+
+.tier-pill {
+    min-width: 48px;
+    padding: 3px 10px;
+
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+
+    background: #0c0c0c;
+    color: #f2f2f2;
+
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.tier-pill.gold {
+    border-color: #f5b82e;
+    color: #f5b82e;
+}
+
+.tier-pill.empty {
+    border-color: #2a2a2a;
+    color: #666666;
+}
+
+.tier-badge.is-empty .badge-circle {
+    opacity: 0.55;
+}
+
+.tier-badge.is-empty .tier-pill {
+    visibility: hidden;
+}
+
+/* pastylka w tabeli Overall */
+.player-tier.tier-pill {
+    min-width: 50px;
+    padding: 4px 10px;
+
+    border-radius: 8px;
+
+    background: #0c0c0c;
+    font-size: 12px;
+}
+
+.player-tier.tier-pill:not(.gold):not(.empty) {
+    border-color: #dcdcdc;
+    color: #f2f2f2;
+}
+
+.player-tier.tier-pill.gold {
+    border-color: #f5b82e;
+    color: #f5b82e;
+}
+
+.player-tier.tier-pill.empty {
+    border-color: #2a2a2a;
+    color: #666666;
+}
+
+@media (max-width: 650px) {
+
+    .modal-badges {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* =========================================================
+   GGtiers - kompaktowa tabela i odznaki trybów
+   ========================================================= */
+#tierlist:not(.columns-view) {
+    overflow-x: hidden;
+}
+.all-players-header,
+.all-players-row {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns:
+        minmax(24px, 0.35fr)
+        minmax(95px, 1.8fr)
+        minmax(48px, 0.65fr)
+        repeat(var(--mode-count, 4), minmax(30px, 0.58fr));
+    column-gap: 4px;
+    padding-left: clamp(5px, 1.2vw, 18px);
+    padding-right: clamp(5px, 1.2vw, 18px);
+}
+.all-players-header {
+    min-height: 44px;
+    font-size: 10px;
+}
+.all-players-header > strong {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.all-players-header > strong:nth-child(2) {
+    justify-content: flex-start;
+}
+.mode-column-icon {
+    width: clamp(15px, 2vw, 24px);
+    height: clamp(15px, 2vw, 24px);
+    object-fit: contain;
+}
+.player-name {
+    gap: 5px;
+    overflow: hidden;
+    font-size: clamp(10px, 1.05vw, 14px);
+}
+.player-name-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.player-skin {
+    width: clamp(18px, 2.2vw, 30px);
+    height: clamp(18px, 2.2vw, 30px);
+}
+.player-overall {
+    text-align: center;
+    font-size: clamp(10px, 1.05vw, 14px);
+}
+.player-mode-cell {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tier-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 0;
+    width: 100%;
+}
+.badge-circle {
+    width: clamp(22px, 2.8vw, 36px);
+    height: clamp(22px, 2.8vw, 36px);
+    border: 1px solid #555;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 25%, #292929, #101010 75%);
+    box-shadow: inset 0 0 0 3px #171717, 0 0 0 1px #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.badge-icon {
+    width: 68%;
+    height: 68%;
+    object-fit: contain;
+}
+.badge-icon-emoji {
+    font-size: clamp(12px, 1.5vw, 20px);
+}
+.tier-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    max-width: 100%;
+    padding: 2px clamp(3px, .5vw, 7px);
+    border: 1px solid #d7ad23;
+    border-radius: 6px;
+    background: #080808;
+    color: #ffd54a;
+    font-size: clamp(8px, .8vw, 11px);
+    line-height: 1.25;
+    font-weight: 800;
+    white-space: nowrap;
+}
+.tier-pill:not(.gold):not(.empty) {
+    border-color: #9ca8af;
+    color: #d7e0e5;
+}
+.tier-pill.empty {
+    color: #777;
+    border-color: #444;
+}
+@media (max-width: 900px) {
+    .all-players-header,
+    .all-players-row {
+        grid-template-columns:
+            22px minmax(75px, 1.5fr) 42px
+            repeat(var(--mode-count, 4), minmax(26px, .55fr));
+        column-gap: 2px;
+    }
+    .tier-badge { gap: 2px; }
+    .badge-circle {
+        width: clamp(20px, 3vw, 28px);
+        height: clamp(20px, 3vw, 28px);
+    }
+}
+@media (max-width: 520px) {
+    .all-players-header,
+    .all-players-row {
+        grid-template-columns:
+            18px minmax(55px, 1.35fr) 32px
+            repeat(var(--mode-count, 4), minmax(22px, .5fr));
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .all-players-row { min-height: 54px; }
+    .player-place { font-size: 10px; }
+    .player-name { gap: 3px; }
+    .player-skin { display: none; }
+    .tier-pill { padding: 1px 2px; border-radius: 4px; }
+}

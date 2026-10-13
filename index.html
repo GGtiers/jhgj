@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+    <!-- ==========================================
+         PODSTAWOWE USTAWIENIA STRONY
+         ========================================== -->
+
+    <!-- Obsługa polskich znaków -->
+    <meta charset="UTF-8">
+
+    <!-- Dopasowanie strony do telefonu / komputera -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Nazwa widoczna na karcie przeglądarki -->
+    <title>GGtiers</title>
+
+    <!-- Podłączenie naszego pliku CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ikonka na karcie przeglądarki -->
+    <link rel="icon" type="image/png" href="images/GGtiers_logo.png">
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         GÓRA STRONY (HERO) - bez menu
+         ========================================== -->
+
+    <div class="hero" role="banner">
+        <div class="hero-inner">
+            <img
+                class="hero-logo"
+                src="images/GGtiers_logo.png"
+                alt="GGtiers"
+            >
+            <div class="hero-text">
+                <p class="hero-title">GGtiers</p>
+                <p class="hero-subtitle">Najlepsza tierlista Minecraft PvP</p>
+            </div>
+
+            <a
+                class="discord-link"
+                href="https://discord.gg/ggtiers"
+                target="_blank"
+                rel="noopener"
+                aria-label="Dołącz do nas na Discordzie"
+            >
+                <img src="images/discord.svg" alt="Discord">
+            </a>
+        </div>
+    </div>
+
+
+
+    <!-- ==========================================
+         GŁÓWNA ZAWARTOŚĆ STRONY
+         ========================================== -->
+
+    <main>
+
+
+        <!-- Tytuł tierlisty -->
+        <h2>Ranking graczy</h2>
+
+
+        <!-- ==========================================
+     WYSZUKIWARKA GRACZY
+     ========================================== -->
+
+<input
+    type="text"
+    id="playerSearch"
+    placeholder="🔎 Wyszukaj gracza..."
+>
+
+        <!-- Przyciski trybów (tworzone przez script.js) -->
+        <div id="modeTabs" class="mode-tabs"></div>
+
+
+
+       
+
+
+        <!-- ==========================================
+             TIERLISTA
+             ========================================== -->
+
+        <!--
+
+        JavaScript będzie tutaj automatycznie
+        tworzył wszystkie tiery i dodawał
+        do nich odpowiednich graczy.
+
+        Przykład:
+
+        LT1 → Player1
+        LT2 → Player2
+        LT3 → Player3
+        HT4 → Player4
+        HT5 → Player5
+
+        -->
+
+        <div id="tierlist"></div>
+
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <!--
+    Ten plik odpowiada między innymi za:
+
+    - pobieranie graczy z localStorage
+    - wyświetlanie tierlisty
+    - przełączanie Sword / Crystal / NPot / Axe
+    - otwieranie profili graczy
+    -->
+<!-- ==========================================
+     OKIENKO PROFILU GRACZA
+     ========================================== -->
+
+<div id="playerModal" class="player-modal">
+
+    <div class="player-modal-content">
+
+        <!-- Nazwa gracza -->
+        <h2 id="modalPlayerName">
+            Xdark
+        </h2>
+
+        <!-- Tiery gracza -->
+        <div id="modalPlayerInfo"></div>
+
+        <!-- Przycisk zamknięcia -->
+        <button id="closePlayerModal">
+            Zamknij
+        </button>
+
+    </div>
+
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GGtiers Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="admin-page">
+
+
+<!-- ========================================
+     GÓRNY PASEK
+======================================== -->
+
+<header>
+
+    <h1>GGtiers</h1>
+
+    <nav>
+
+        <a href="index.html">
+            Tierlist
+        </a>
+
+        <a href="admin.html">
+            Admin
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ========================================
+     ADMIN LAYOUT
+======================================== -->
+
+<main class="admin-layout">
+
+
+    <!-- ====================================
+         SIDEBAR
+    ===================================== -->
+
+    <aside class="admin-sidebar">
+
+
+        <div class="admin-logo">
+
+            <span class="admin-logo-icon">
+                G
+            </span>
+
+            <div>
+
+                <strong>
+                    GGtiers
+                </strong>
+
+                <small>
+                    Admin Panel
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-menu">
+
+            <a
+                href="#add-player"
+                class="admin-menu-item active"
+            >
+
+                <span>
+                    ＋
+                </span>
+
+                Dodaj gracza
+
+            </a>
+
+
+            <a
+                href="#players"
+                class="admin-menu-item"
+            >
+
+                <span>
+                    👤
+                </span>
+
+                Gracze
+
+            </a>
+
+        </div>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <a href="index.html">
+                ← Wróć do tierlisty
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ====================================
+         CONTENT
+    ===================================== -->
+
+    <section class="admin-content">
+
+
+        <!-- =================================
+             HEADER
+        ================================== -->
+
+        <div class="admin-page-header">
+
+            <div>
+
+                <p class="admin-small-title">
+                    PANEL ADMINISTRACYJNY
+                </p>
+
+                <h2>
+                    Zarządzanie graczami
+                </h2>
+
+                <p>
+                    Dodawaj graczy i zarządzaj ich tierami.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             DODAWANIE GRACZA
+        ================================== -->
+
+        <section
+            class="admin-card"
+            id="add-player"
+        >
+
+
+            <div class="admin-card-header">
+
+                <div>
+
+                    <h3>
+                        ＋ Dodaj gracza
+                    </h3>
+
+                    <p>
+                        Uzupełnij nick oraz wszystkie tiery.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 FORMULARZ
+            ================================== -->
+
+            <div class="admin-form">
+
+
+                <!-- NICK -->
+
+                <div
+                    class="
+                        admin-form-group
+                        admin-name-field
+                    "
+                >
+
+                    <label for="newPlayerName">
+                        Gracz
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newPlayerName"
+                        placeholder="Np. Xdark"
+                    >
+
+                </div>
+
+
+                <!-- TRYBY GENEROWANE PRZEZ JS -->
+
+                <div
+                    id="newPlayerModes"
+                    class="admin-generated-modes"
+                ></div>
+
+
+                <!-- SUBHUMAN -->
+
+                <div
+                    class="
+                        admin-form-group
+                        admin-subhuman-field
+                    "
+                >
+
+                    <label>
+                        Status gracza
+                    </label>
+
+
+                    <label class="admin-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="newPlayerSubhuman"
+                        >
+
+                        <span>
+                            Subhuman
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================
+                 PRZYCISK
+            ================================== -->
+
+            <div class="admin-actions">
+
+                <button
+                    id="addPlayerButton"
+                    class="
+                        admin-button
+                        primary
+                    "
+                >
+
+                    ＋ Dodaj gracza
+
+                </button>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div
+                id="adminStatus"
+                class="admin-status"
+            ></div>
+
+
+        </section>
+
+
+        <!-- =================================
+             LISTA GRACZY
+        ================================== -->
+
+        <section
+            class="admin-card"
+            id="players"
+        >
+
+
+            <div class="admin-card-header">
+
+                <div>
+
+                    <h3>
+                        👤 Gracze
+                    </h3>
+
+                    <p>
+                        Kliknij gracza, aby edytować jego tiery.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="playersList"
+                class="admin-players-table"
+            ></div>
+
+
+        </section>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- ========================================
+     MODAL EDYCJI GRACZA
+======================================== -->
+
+<div
+    id="editPlayerModal"
+    class="edit-player-modal"
+>
+
+
+    <div class="edit-player-content">
+
+
+        <!-- =================================
+             MODAL HEADER
+        ================================== -->
+
+        <div class="edit-player-header">
+
+
+            <div>
+
+                <p>
+                    EDYCJA GRACZA
+                </p>
+
+                <h2 id="editPlayerName">
+                    Xdark
+                </h2>
+
+            </div>
+
+
+            <button
+                id="closeEditModal"
+                class="close-modal-button"
+            >
+                ×
+            </button>
+
+
+        </div>
+
+
+        <!-- =================================
+             TRYBY
+        ================================== -->
+
+        <div
+            id="editPlayerModes"
+            class="edit-player-tiers"
+        ></div>
+
+
+        <!-- =================================
+             SUBHUMAN
+        ================================== -->
+
+        <div class="edit-player-subhuman">
+
+            <label class="admin-checkbox">
+
+                <input
+                    type="checkbox"
+                    id="editPlayerSubhuman"
+                >
+
+                <span>
+                    Subhuman
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <!-- =================================
+             AKCJE
+        ================================== -->
+
+        <div class="edit-player-actions">
+
+
+            <button
+                id="saveEditButton"
+                class="
+                    admin-button
+                    primary
+                "
+            >
+
+                💾 Zapisz zmiany
+
+            </button>
+
+
+            <button
+                id="deleteEditButton"
+                class="
+                    admin-button
+                    danger
+                "
+            >
+
+                🗑 Usuń gracza
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- ========================================
+     SKRYPTY
+======================================== -->
+
+<script src="config.js"></script>
+
+<script src="admin.js"></script>
+
+
+</body>
+
+</html>

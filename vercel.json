@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://hel1.lvlhost.pl:30000/api/:path*"
+    }
+  ]
+}
